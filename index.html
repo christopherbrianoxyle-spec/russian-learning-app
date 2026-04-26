@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Application moderne d'apprentissage du russe - phrases par catégories et niveaux" />
+  <meta name="theme-color" content="#6C63FF" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="РусскийЯзык" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icon-192.png" />
+  <title>РусскийЯзык — Apprendre le Russe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">Я</div>
+      <div class="brand-text">
+        <span class="brand-title">РусскийЯзык</span>
+        <span class="brand-sub">Learn Russian</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <p class="nav-label">Категории</p>
+      <ul class="category-list" id="categoryList">
+        <li>
+          <button class="cat-btn active" data-category="all" id="cat-all">
+            <span class="cat-icon">🌐</span>
+            <span class="cat-name">Все темы</span>
+            <span class="cat-badge" id="badge-all">—</span>
+          </button>
+        </li>
+        <!-- BASES DE LA COMMUNICATION -->
+        <li>
+          <button class="cat-btn" data-category="conversation" id="cat-conversation">
+            <span class="cat-icon">💬</span>
+            <span class="cat-name">Разговор</span>
+            <span class="cat-badge" id="badge-conversation">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="temps" id="cat-temps">
+            <span class="cat-icon">🕐</span>
+            <span class="cat-name">Время</span>
+            <span class="cat-badge" id="badge-temps">—</span>
+          </button>
+        </li>
+        <!-- VIE QUOTIDIENNE -->
+        <li>
+          <button class="cat-btn" data-category="nourriture" id="cat-nourriture">
+            <span class="cat-icon">🍽️</span>
+            <span class="cat-name">Еда</span>
+            <span class="cat-badge" id="badge-nourriture">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="shopping" id="cat-shopping">
+            <span class="cat-icon">🛒</span>
+            <span class="cat-name">Покупки</span>
+            <span class="cat-badge" id="badge-shopping">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="logement" id="cat-logement">
+            <span class="cat-icon">🏠</span>
+            <span class="cat-name">Жильё</span>
+            <span class="cat-badge" id="badge-logement">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="sante" id="cat-sante">
+            <span class="cat-icon">🏥</span>
+            <span class="cat-name">Здоровье</span>
+            <span class="cat-badge" id="badge-sante">—</span>
+          </button>
+        </li>
+        <!-- DÉPLACEMENTS -->
+        <li>
+          <button class="cat-btn" data-category="transport" id="cat-transport">
+            <span class="cat-icon">🚇</span>
+            <span class="cat-name">Транспорт</span>
+            <span class="cat-badge" id="badge-transport">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="voyage" id="cat-voyage">
+            <span class="cat-icon">✈️</span>
+            <span class="cat-name">Путешествие</span>
+            <span class="cat-badge" id="badge-voyage">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="aeroport" id="cat-aeroport">
+            <span class="cat-icon">🛫</span>
+            <span class="cat-name">Аэропорт</span>
+            <span class="cat-badge" id="badge-aeroport">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="hotel" id="cat-hotel">
+            <span class="cat-icon">🏨</span>
+            <span class="cat-name">Отель</span>
+            <span class="cat-badge" id="badge-hotel">—</span>
+          </button>
+        </li>
+        <!-- ACTIVITÉS -->
+        <li>
+          <button class="cat-btn" data-category="loisirs" id="cat-loisirs">
+            <span class="cat-icon">🎭</span>
+            <span class="cat-name">Досуг</span>
+            <span class="cat-badge" id="badge-loisirs">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="education" id="cat-education">
+            <span class="cat-icon">📚</span>
+            <span class="cat-name">Образование</span>
+            <span class="cat-badge" id="badge-education">—</span>
+          </button>
+        </li>
+        <li>
+          <button class="cat-btn" data-category="travail" id="cat-travail">
+            <span class="cat-icon">💼</span>
+            <span class="cat-name">Работа</span>
+            <span class="cat-badge" id="badge-travail">—</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="progress-ring-wrap">
+        <svg class="progress-ring" width="52" height="52">
+          <circle class="ring-bg" cx="26" cy="26" r="22"/>
+          <circle class="ring-fill" cx="26" cy="26" r="22" id="progressRing"/>
+        </svg>
+        <span class="ring-label" id="progressLabel">0%</span>
+      </div>
+      <div class="progress-info">
+        <span class="prog-title">Progression</span>
+        <span class="prog-sub" id="progressSub">0 phrases vues</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-area">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-title-wrap">
+          <h1 class="topbar-title" id="pageTitle">Уровни</h1>
+          <span class="topbar-sub" id="pageSub">Toutes les catégories</span>
+        </div>
+      </div>
+
+      <div class="topbar-center">
+        <div class="level-filters" id="levelFilters">
+          <button class="level-btn active" data-level="all" id="lvl-all">Tous</button>
+          <button class="level-btn" data-level="A1" id="lvl-A1">A1</button>
+          <button class="level-btn" data-level="A2" id="lvl-A2">A2</button>
+          <button class="level-btn" data-level="B1" id="lvl-B1">B1</button>
+          <button class="level-btn" data-level="B2" id="lvl-B2">B2</button>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="fr" id="lang-fr" title="Français">🇫🇷</button>
+          <button class="lang-btn" data-lang="en" id="lang-en" title="English">🇺🇸</button>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Mode nuit / jour" aria-label="Toggle dark mode">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat-chip">
+        <span class="stat-icon">👁️</span>
+        <span id="totalVisible">0</span> phrases
+      </div>
+      <div class="stat-chip">
+        <span class="stat-icon">📊</span>
+        Niveau : <strong id="currentLevel">Tous</strong>
+      </div>
+      <div class="stat-chip">
+        <span class="stat-icon">🗂️</span>
+        <span id="currentCategory">Toutes catégories</span>
+      </div>
+    </div>
+
+    <!-- CONTENT GRID -->
+    <section class="content-grid" id="contentGrid">
+      <!-- Cards injected by JS -->
+    </section>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state hidden" id="emptyState">
+      <div class="empty-icon">🔍</div>
+      <p class="empty-title">Aucune phrase trouvée</p>
+      <p class="empty-sub">Essayez de changer de catégorie ou de niveau</p>
+    </div>
+
+    <!-- CARD MODAL -->
+    <div class="modal-overlay hidden" id="modalOverlay">
+      <div class="modal-card" id="modalCard">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div class="modal-level-badge" id="modalLevel">A1</div>
+        <div class="modal-russian" id="modalRussian"></div>
+        <div class="modal-phonetic" id="modalPhonetic"></div>
+        <div class="modal-translation" id="modalTranslation"></div>
+        <div class="modal-category" id="modalCategory"></div>
+        
+        <!-- Contrôles Audio -->
+        <div class="modal-audio-controls">
+          <button class="modal-audio-btn" id="playRussian" title="Écouter en russe">
+            <span class="audio-icon">🔊</span>
+            <span class="audio-text">Russe</span>
+          </button>
+          <button class="modal-audio-btn" id="playTranslation" title="Écouter la traduction">
+            <span class="audio-icon">🔊</span>
+            <span class="audio-text" id="translationLangLabel">Français</span>
+          </button>
+          <button class="modal-audio-btn" id="playEnglish" title="Écouter en anglais">
+            <span class="audio-icon">🔊</span>
+            <span class="audio-text">English</span>
+          </button>
+        </div>
+        
+        <button class="modal-seen-btn" id="modalSeenBtn">
+          <span>✔</span> Marquer comme vu
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="data.js"></script>
+  <script src="data_extra1.js"></script>
+  <script src="data_extra2.js"></script>
+  <script src="data_extra3.js"></script>
+  <script src="data_extra4.js"></script>
+  <script src="data_extra5.js"></script>
+  <script src="data_extra6.js"></script>
+  <script src="data_extra7.js"></script>
+  <script src="app.js"></script>
+  
+  <!-- Service Worker pour PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(registration => {
+            console.log('✅ Service Worker enregistré:', registration.scope);
+          })
+          .catch(error => {
+            console.log('❌ Échec Service Worker:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
