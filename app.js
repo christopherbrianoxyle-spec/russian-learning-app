@@ -357,13 +357,14 @@
     }
 
     /* ── UTIL ─────────────────────────────────────────────────── */
-    function escapeHtml(str) {
-        return str
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;");
-    }
+   function escapeHtml(str) {
+    if (!str) return '';
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/"/g, """);
+}
 
     /* ── AUDIO SYSTEM ─────────────────────────────────────────── */
     let currentSpeech = null;
